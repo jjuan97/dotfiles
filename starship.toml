@@ -1,0 +1,196 @@
+# ~/.config/starship.toml
+# jjuan97
+
+# Color palette
+# background: https://coolors.co/7cf0bd-eb8a90-e4cc37-957fef-464d5d-2f4858-33658a-2b59c3-19381f
+# modules: https://coolors.co/74a57f-ffe381-c14953-2b59c3-4f4789
+
+# prompt order
+format = """
+\
+$character\
+$status\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$dart\
+$golang\
+$java\
+$kotlin\
+$nodejs\
+$php\
+$python\
+$ruby\
+$rust\
+$scala\
+$conda\
+$jobs\
+$memory_usage\
+$cmd_duration\
+$line_break\
+$battery\
+[╰─➤ ](fg:252)"""
+
+# discard modules
+# $shlvl\
+# $time\
+
+# home modules
+[character]
+success_symbol = "╭─[](fg:#7CF0BD bg:#464D5D)"
+error_symbol = "╭─[](fg:#EB8A90 bg:#464D5D)"
+format = "$symbol"
+
+[status]
+style = "fg:#EB8A90 bg:#464D5D"
+symbol = ""
+format = '[ $status]($style)'
+disabled = false
+
+[username]
+show_always = true
+style_user = '#464D5D'
+format = "[ $user](bold fg:255 bg:$style)"
+
+[hostname]
+ssh_only = false
+style = '#464D5D'
+format = "[@$hostname](fg:#969696 bg:$style)[](fg:$style)"
+
+# directory 
+[directory]
+style = "#2F4858"
+truncation_length  = 3
+truncate_to_repo = true
+truncation_symbol  = "…/"
+read_only = ""
+format = "[](fg:black bg:$style)[$path $read_only](fg:255 bg:$style)[](fg:$style)"
+
+# harware modules
+[memory_usage]
+disabled = false
+symbol = " ${ram}"
+
+[battery]
+unknown_symbol = ""
+empty_symbol = ""
+discharging_symbol = ""
+charging_symbol = ""
+full_symbol = ""
+
+	[[battery.display]]
+	threshold = 10
+	style = "bold fg:red"
+
+	[[battery.display]]
+	threshold = 30
+	style = "fg:#ff8800"
+
+	[[battery.display]]
+	threshold = 50
+	style = "fg:yellow"
+
+# info modules
+[jobs]
+symbol = " "
+style = '#2B59C3'
+format = "[](fg:black bg:$style)[$symbol$number ](fg:255 bg:$style)[](fg:$style)"
+
+[cmd_duration]
+min_time = 50
+style = '#464D5D'
+format = "[](fg:black bg:$style)[祥$duration](bold fg:#E4CC37 bg:$style)[](fg:$style)"
+
+# git (version control)
+[git_branch]
+symbol = " "
+style = "#33658A"
+format = "[](fg:black bg:$style)[$symbol](fg:255 bg:$style)[$branch](fg:255 bg:$style)[](fg:$style)"
+
+[git_commit]
+style = "#33658A"
+format = "\b[ ⚬ $hash$tag](fg:255 bg:$style)[](fg:$style)"
+
+[git_state]
+style = "#33658A"
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+format = "\b[ \\($state( $progress_current/$progress_total)\\)](fg:#EB8A90 bg:$style)[](fg:$style)"
+
+[git_status]
+style = "#33658A"
+conflicted = "${count} "
+stashed = "${count} "
+deleted = "${count}✘ "
+renamed = "${count}﫦 "
+modified = "${count}↺ "
+staged = "${count} "
+untracked = "${count} "
+disabled = false
+format = '([](fg:black bg:$style)[ $conflicted](bold fg:255 bg:$style)[$stashed](bold fg:#7CF0BD bg:$style)[$deleted](bold fg:#EB8A90 bg:$style)[$renamed](bold fg:#957FEF bg:$style)[$modified](bold fg:#E4CC37 bg:$style)[$staged](bold fg:#7CF0BD bg:$style)[$untracked](bold fg:cyan bg:$style)[](fg:$style))'
+
+# other modules
+[conda]
+style = "#74A57F"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$environment](bold fg:255 bg:$style)[](fg:$style)"
+
+[dart]
+style = "#2B59C3"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+
+[golang]
+style = "#2B59C3"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+
+[java]
+style = "#464D5D"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:#C14953 bg:$style)[](fg:$style)"
+
+[kotlin]
+style = "#4F4789"
+symbol = "🅺 "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+
+[nodejs]
+style = "#464D5D"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:#74A57F bg:$style)[](fg:$style)"
+
+[php]
+style = "#4F4789"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:black bg:$style)[](fg:$style)"
+
+[python]
+style = "#FFE381"
+symbol = " "
+python_binary = "python3"
+format = "[](fg:black bg:$style)[$symbol$pyenv_prefix$version$virtualenv](fg:black bg:$style)[](fg:$style)"
+
+[ruby]
+style = "#C14953"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+
+[rust]
+style = "#C14953"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+
+[scala]
+style = "#74A57F"
+symbol = " "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
