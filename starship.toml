@@ -2,8 +2,7 @@
 # jjuan97
 
 # Color palette
-# background: https://coolors.co/7cf0bd-eb8a90-e4cc37-957fef-464d5d-2f4858-33658a-2b59c3-19381f
-# modules: https://coolors.co/74a57f-ffe381-c14953-2b59c3-4f4789
+# https://coolors.co/7cf0bd-eb8a90-464d5d-6082e6-7692ff-abd2fa-e4cc37
 
 # prompt order
 format = """
@@ -71,9 +70,9 @@ read_only = ""
 format = "[](fg:black bg:$style)[$path $read_only](fg:255 bg:$style)[](fg:$style)"
 
 # harware modules
-[memory_usage]
-disabled = false
-symbol = " ${ram}"
+#[memory_usage]
+#disabled = false
+#symbol = " ${ram}"
 
 [battery]
 unknown_symbol = ""
