@@ -16,6 +16,7 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_status\
+$aws\
 $dart\
 $golang\
 $java\
@@ -30,6 +31,7 @@ $conda\
 $jobs\
 $memory_usage\
 $cmd_duration\
+[](fg:black)\
 $line_break\
 $battery\
 [╰─➤ ](fg:252)"""
@@ -58,7 +60,7 @@ format = "[ $user](bold fg:255 bg:$style)"
 [hostname]
 ssh_only = false
 style = '#464D5D'
-format = "[@$hostname](fg:#969696 bg:$style)[](fg:$style)"
+format = "[@$hostname](fg:#969696 bg:$style)[](fg:$style bg:black)"
 
 # directory 
 [directory]
@@ -67,19 +69,19 @@ truncation_length  = 3
 truncate_to_repo = true
 truncation_symbol  = "…/"
 read_only = ""
-format = "[](fg:black bg:$style)[$path $read_only](fg:255 bg:$style)[](fg:$style)"
+format = "[](fg:black bg:$style)[$path $read_only](fg:255 bg:$style)[](fg:$style bg:black)"
 
 # harware modules
 #[memory_usage]
 #disabled = false
-#symbol = " ${ram}"
+#symbol = "  ${ram}"
 
 [battery]
-unknown_symbol = ""
-empty_symbol = ""
-discharging_symbol = ""
-charging_symbol = ""
-full_symbol = ""
+unknown_symbol = " 󰂃"
+empty_symbol = " 󰁺"
+discharging_symbol = " 󱟤"
+charging_symbol = " 󰂄"
+full_symbol = " 󱟢"
 
 	[[battery.display]]
 	threshold = 10
@@ -95,24 +97,24 @@ full_symbol = ""
 
 # info modules
 [jobs]
-symbol = " "
+symbol = "  "
 style = '#2B59C3'
-format = "[](fg:black bg:$style)[$symbol$number ](fg:255 bg:$style)[](fg:$style)"
+format = "[](fg:black bg:$style)[$symbol$number ](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [cmd_duration]
 min_time = 50
 style = '#464D5D'
-format = "[](fg:black bg:$style)[祥$duration](bold fg:#E4CC37 bg:$style)[](fg:$style)"
+format = "[](fg:black bg:$style)[  $duration](bold fg:#E4CC37 bg:$style)[](fg:$style bg:black)"
 
 # git (version control)
 [git_branch]
-symbol = " "
+symbol = "  "
 style = "#33658A"
-format = "[](fg:black bg:$style)[$symbol](fg:255 bg:$style)[$branch](fg:255 bg:$style)[](fg:$style)"
+format = "[](fg:black bg:$style)[$symbol](fg:255 bg:$style)[$branch](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [git_commit]
 style = "#33658A"
-format = "\b[ ⚬ $hash$tag](fg:255 bg:$style)[](fg:$style)"
+format = "\b[  $hash$tag](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [git_state]
 style = "#33658A"
@@ -123,73 +125,78 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-format = "\b[ \\($state( $progress_current/$progress_total)\\)](fg:#EB8A90 bg:$style)[](fg:$style)"
+format = "\b[ \\($state( $progress_current/$progress_total)\\)](fg:#EB8A90 bg:$style)[](fg:$style bg:black)"
 
 [git_status]
 style = "#33658A"
 conflicted = "${count} "
 stashed = "${count} "
 deleted = "${count}✘ "
-renamed = "${count}﫦 "
+renamed = "${count}󰑕 "
 modified = "${count}↺ "
 staged = "${count} "
 untracked = "${count} "
 disabled = false
-format = '([](fg:black bg:$style)[ $conflicted](bold fg:255 bg:$style)[$stashed](bold fg:#7CF0BD bg:$style)[$deleted](bold fg:#EB8A90 bg:$style)[$renamed](bold fg:#957FEF bg:$style)[$modified](bold fg:#E4CC37 bg:$style)[$staged](bold fg:#7CF0BD bg:$style)[$untracked](bold fg:cyan bg:$style)[](fg:$style))'
+format = '([](fg:black bg:$style)[ $conflicted](bold fg:255 bg:$style)[$stashed](bold fg:#7CF0BD bg:$style)[$deleted](bold fg:#EB8A90 bg:$style)[$renamed](bold fg:#957FEF bg:$style)[$modified](bold fg:#E4CC37 bg:$style)[$staged](bold fg:#7CF0BD bg:$style)[$untracked](bold fg:cyan bg:$style)[](fg:$style bg:black))'
+
+[aws]
+symbol = "  "
+style = "#33658A"
+format = '[](fg:black bg:$style)[$symbol](fg:255 bg:$style)[$branch](fg:255 bg:$style)[](fg:$style bg:black)'
 
 # other modules
 [conda]
 style = "#74A57F"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$environment](bold fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$environment](bold fg:255 bg:$style)[](fg:$style bg:black)"
 
 [dart]
 style = "#2B59C3"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [golang]
 style = "#2B59C3"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [java]
 style = "#464D5D"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:#C14953 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:#C14953 bg:$style)[](fg:$style bg:black)"
 
 [kotlin]
 style = "#4F4789"
-symbol = "🅺 "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [nodejs]
 style = "#464D5D"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:#74A57F bg:$style)[](fg:$style)"
+symbol = " 󰎙 "
+format = "[](fg:black bg:$style)[$symbol$version](fg:#74A57F bg:$style)[](fg:$style bg:black)"
 
 [php]
 style = "#4F4789"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:black bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:black bg:$style)[](fg:$style bg:black)"
 
 [python]
 style = "#FFE381"
-symbol = " "
+symbol = "  "
 python_binary = "python3"
-format = "[](fg:black bg:$style)[$symbol$pyenv_prefix$version$virtualenv](fg:black bg:$style)[](fg:$style)"
+format = "[](fg:black bg:$style)[$symbol$pyenv_prefix$version$virtualenv](fg:black bg:$style)[](fg:$style bg:black)"
 
 [ruby]
 style = "#C14953"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [rust]
 style = "#C14953"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
 
 [scala]
 style = "#74A57F"
-symbol = " "
-format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style)"
+symbol = "  "
+format = "[](fg:black bg:$style)[$symbol$version](fg:255 bg:$style)[](fg:$style bg:black)"
